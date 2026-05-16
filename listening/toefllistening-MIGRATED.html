@@ -86,7 +86,7 @@
 
                 <div class="flex items-center gap-6">
                     <div id="timer-container" class="timer-display paused">
-                        <i class="fas fa-hourglass-half mr-2 text-sm"></i><span id="timer">29:00</span>
+                        <i class="fas fa-hourglass-half mr-2 text-sm"></i><span>29:00</span>
                     </div>
                     <button id="submit-btn" onclick="submitListening()" class="btn-3d opacity-50 cursor-not-allowed" disabled title="Submit test">
                         <i class="fas fa-paper-plane mr-2"></i>Submit
@@ -1729,7 +1729,6 @@
 
         // Start Test Function
         function startTest() {
-            console.log('Start Test button clicked');
             testStarted = true;
 
             // Hide start screen
@@ -1756,7 +1755,7 @@
             const timerContainer = document.getElementById('timer-container');
             if (timerContainer) {
                 timerContainer.classList.remove('paused');
-                timerContainer.innerHTML = '<i class="fas fa-hourglass-half mr-2 text-sm"></i><span id="timer">29:00</span>';
+                timerContainer.innerHTML = '<i class="fas fa-hourglass-half mr-2 text-sm"></i><span>29:00</span>';
             }
 
             // Start the countdown timer
@@ -1768,7 +1767,6 @@
 
         // Start Timer (Countdown)
         function startTimer() {
-            console.log('Timer started');
             timerRunning = true;
             timerInterval = setInterval(() => {
                 if (timeRemaining > 0) {
@@ -1802,7 +1800,6 @@
         function handleTimeUp() {
             clearInterval(timerInterval);
             timerRunning = false;
-            alert('Time is up! Your test will now be submitted.');
             submitListening();
         }
 
@@ -1834,11 +1831,9 @@
         // Play Audio
         function playAudio(audioId) {
             if (!testStarted) {
-                alert('Please click "Start Test & Timer" to begin the test.');
                 return;
             }
 
-            console.log('Playing audio:', audioId);
             const audio = document.getElementById(audioId);
             const player = document.getElementById('audio-' + audioId);
 
@@ -1850,10 +1845,8 @@
             // Add error handling
             audio.onerror = function() {
                 console.error('Error loading audio:', audioId, audio.error);
-                alert('Error loading audio file. Please check that the file exists in the same folder as this HTML file.');
             };
 
-            console.log('Audio src:', audio.src);
 
             // Stop any currently playing audio
             if (currentlyPlaying && currentlyPlaying !== audio) {
@@ -1866,7 +1859,6 @@
             if (audio.paused) {
                 audio.play().catch(e => {
                     console.error('Play error:', e);
-                    alert('Could not play audio. Error: ' + e.message);
                 });
                 player.classList.add('playing');
                 player.querySelector('.play-btn i').className = 'fas fa-pause';
@@ -1881,7 +1873,6 @@
 
         // Audio Ended
         function audioEnded(audioId) {
-            console.log('Audio ended:', audioId);
             const player = document.getElementById('audio-' + audioId);
             if (player) {
                 player.classList.remove('playing');

@@ -2917,7 +2917,7 @@
                     <p class="text-slate-300 mb-4">Listen to the interviewer's question and record your response. (45 seconds)</p>
                     
                     <div class="glass-frame p-4 mb-4" style="background: rgba(30, 41, 59, 0.5);">
-                        <p class="text-slate-300 text-sm italic">"Good points. Lastly, looking to the future, do you think people's attitudes towards work-life balance will change? For example, do you think people will prioritize personal life over work, or work over personal life? Explain your thought."</p>
+                        <p class="text-slate-300 text-sm italic">"Good points. Lastly, looking to the future, do you think people's attitudes towards work-life balance will change? For example, do you think people will prioritize personal life over work, or work over personal life? Explain your thoughts."</p>
                     </div>
                     
                     <div class="flex justify-center gap-4 mb-6">
@@ -3612,7 +3612,6 @@
             if (confirm('Are you sure you want to submit the Reading section?')) {
                 clearInterval(readingTimer);
                 completedSections.reading = true;
-                alert('Reading section submitted!');
                 backToDashboard();
             }
         }
@@ -3641,7 +3640,6 @@
         }
         
         function playListeningAudio(audioId) {
-            console.log('Playing audio:', audioId);
             const audio = document.getElementById(audioId);
             const player = document.getElementById('audio-' + audioId);
 
@@ -3653,10 +3651,8 @@
             // Add error handling
             audio.onerror = function() {
                 console.error('Error loading audio:', audioId, audio.error);
-                alert('Error loading audio file. Please check that the file exists in the listening folder.');
             };
 
-            console.log('Audio src:', audio.src);
 
             // Stop any currently playing audio
             if (currentlyPlaying && currentlyPlaying !== audio) {
@@ -3669,7 +3665,6 @@
             if (audio.paused) {
                 audio.play().catch(e => {
                     console.error('Play error:', e);
-                    alert('Could not play audio. Error: ' + e.message);
                 });
                 player.classList.add('playing');
                 player.querySelector('.play-btn i').className = 'fas fa-pause';
@@ -3683,7 +3678,6 @@
         }
         
         function audioEnded(audioId) {
-            console.log('Audio ended:', audioId);
             const player = document.getElementById('audio-' + audioId);
             if (player) {
                 player.classList.remove('playing');
@@ -3707,14 +3701,12 @@
             const progress = Math.round((answered / totalQuestions) * 100);
             
             // Note: Progress display would need to be added to the listening section HTML if desired
-            console.log('Listening progress:', progress + '%', answered + '/' + totalQuestions);
         }
         
         function submitListening() {
             if (confirm('Are you sure you want to submit the Listening section?')) {
                 clearInterval(listeningTimer);
                 completedSections.listening = true;
-                alert('Listening section submitted!');
                 backToDashboard();
             }
         }
@@ -3808,7 +3800,6 @@
                     }, maxDuration);
                     
                 } catch (err) {
-                    alert('Microphone access denied or not available.');
                 }
             } else {
                 // Stop recording
@@ -3830,7 +3821,6 @@
             if (confirm('Are you sure you want to submit the Speaking section?')) {
                 clearInterval(speakingTimer);
                 completedSections.speaking = true;
-                alert('Speaking section submitted!');
                 backToDashboard();
             }
         }
@@ -3904,7 +3894,6 @@
                 if (emailSeconds <= 0) {
                     clearInterval(emailTimer);
                     document.getElementById('email-timer').textContent = '00:00';
-                    alert('Email writing time is up!');
                 }
             }, 1000);
         }
@@ -3919,7 +3908,6 @@
                 if (discussionSeconds <= 0) {
                     clearInterval(discussionTimer);
                     document.getElementById('discussion-timer').textContent = '00:00';
-                    alert('Discussion writing time is up!');
                 }
             }, 1000);
         }
@@ -4039,7 +4027,6 @@
             const body = document.getElementById('email-body').value;
             
             if (!subject && !body) {
-                alert('Please write your email before saving.');
                 return;
             }
             
@@ -4047,21 +4034,18 @@
             localStorage.setItem('toefl_email_subject', subject);
             localStorage.setItem('toefl_email_body', body);
             
-            alert('Email saved successfully!');
         }
         
         function saveDiscussion() {
             const body = document.getElementById('discussion-body').value;
             
             if (!body) {
-                alert('Please write your response before saving.');
                 return;
             }
             
             // Save to localStorage for persistence
             localStorage.setItem('toefl_discussion_body', body);
             
-            alert('Discussion response saved successfully!');
         }
         
         function startWritingModuleTimers() {
@@ -4075,7 +4059,6 @@
                 if (emailTimer) clearInterval(emailTimer);
                 if (discussionTimer) clearInterval(discussionTimer);
                 completedSections.writing = true;
-                alert('Writing section submitted!');
                 backToDashboard();
             }
         }
