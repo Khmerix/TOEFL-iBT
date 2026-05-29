@@ -1524,6 +1524,11 @@
                         </div>
                     </div>
                 </main>
+                <div class="mt-8 text-center">
+                    <button onclick="submitReading()" class="btn-3d">
+                        <i class="fas fa-paper-plane mr-2"></i>Submit Reading Section
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -1577,7 +1582,12 @@
                             </h2>
                             <p class="text-slate-400 mt-1">Listen to the audio and answer the questions</p>
                         </div>
-                        <div class="timer-display" id="listening-timer">00:00</div>
+                        <div class="flex items-center gap-4">
+                            <div class="timer-display" id="listening-timer">00:00</div>
+                            <button onclick="submitListening()" class="btn-3d">
+                                <i class="fas fa-paper-plane mr-2"></i>Submit
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
@@ -2534,7 +2544,12 @@
                             </h2>
                             <p class="text-slate-400 mt-1">Record your responses to the prompts</p>
                         </div>
-                        <div class="timer-display" id="speaking-timer">00:00</div>
+                        <div class="flex items-center gap-4">
+                            <div class="timer-display" id="speaking-timer">00:00</div>
+                            <button onclick="submitSpeaking()" class="btn-3d">
+                                <i class="fas fa-paper-plane mr-2"></i>Submit
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
